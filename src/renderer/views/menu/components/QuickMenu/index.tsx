@@ -39,16 +39,6 @@ import { getWebUIURL } from '~/common/webui';
 import { ToolbarButton } from '../../../app/components/ToolbarButton';
 import { ZOOM_FACTOR_MIN, ZOOM_FACTOR_MAX } from '~/constants/web-contents';
 
-const onFindClick = () => {
-  /*
-  // TODO(sentialx): get selected tab
-  ipcRenderer.send(
-    `find-show-${store.windowId}`,
-    store.tabs.selectedTab.id,
-    store.tabs.selectedTab.findInfo,
-  );*/
-};
-
 const onDarkClick = () => {
   store.settings.darkContents = !store.settings.darkContents;
   store.save();
@@ -107,17 +97,15 @@ ipcRenderer.on('zoom-factor-updated', (e, zoomFactor) => {
 
 const onPlus = () => {
   ipcRenderer.send('change-zoom-menu', 'in');
-
   if (store.zoomFactor <= ZOOM_FACTOR_MAX - 0.1) {
-    store.zoomFactor = store.zoomFactor + 0.1;
+    store.zoomFactor += 0.1;
   }
 };
 
 const onMinus = () => {
   ipcRenderer.send('change-zoom-menu', 'out');
-
   if (store.zoomFactor >= ZOOM_FACTOR_MIN + 0.1) {
-    store.zoomFactor = store.zoomFactor - 0.1;
+    store.zoomFactor -= 0.1;
   }
 };
 
@@ -127,6 +115,19 @@ const onReset = () => {
 };
 
 export const QuickMenu = observer(() => {
+  // ✅ Listen for update-available event from main process
+  React.useEffect(() => {
+    const handler = () => {
+      store.updateAvailable = true;
+    };
+
+    ipcRenderer.on('update-available', handler);
+
+    return () => {
+      ipcRenderer.removeListener('update-available', handler);
+    };
+  }, []);
+
   return (
     <div
       style={{
