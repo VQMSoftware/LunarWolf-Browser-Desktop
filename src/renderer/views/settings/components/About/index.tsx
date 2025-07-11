@@ -25,7 +25,7 @@ export const About = observer(() => {
       </AppHeader>
 
       <AppInfoRow>
-        <InfoText>App Version: v0.0.5</InfoText>
+        <InfoText>App Version: v0.0.6</InfoText>
         <InfoText>Chromium Version: {chromeVersion}</InfoText>
       </AppInfoRow>
 
