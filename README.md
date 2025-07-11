@@ -3,7 +3,7 @@
 </p>
 
 <div align="center">
-  <h1>LunarWolf Browser Base</h1>
+  <h1>LunarWolf Browser</h1>
 
 LunarWolf Browser which is a modern web browser, built on top of modern web technologies such as `Electron` and `React`, that can also be used as a framework to create a custom web browser (see the [License](#license) section).
 
