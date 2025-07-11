@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-
 import { centerIcon } from '~/renderer/mixins';
 import {
   TOOLBAR_BUTTON_WIDTH,
@@ -7,28 +6,23 @@ import {
 } from '~/constants/design';
 import { ITheme } from '~/interfaces';
 
-export const Icon = styled.div`
+interface IconProps {
+  size: number;
+  disabled: boolean;
+  opacity: number;
+  autoInvert?: boolean;
+  dense?: boolean;
+  theme?: ITheme;
+}
+
+export const Icon = styled.div<IconProps>`
   width: 100%;
   height: 100%;
   will-change: background-image;
   transition: 0.15s background-image;
   backface-visibility: hidden;
 
-  ${({
-    size,
-    disabled,
-    opacity,
-    autoInvert,
-    theme,
-    dense,
-  }: {
-    size: number;
-    disabled: boolean;
-    opacity: number;
-    autoInvert?: boolean;
-    dense?: boolean;
-    theme?: ITheme;
-  }) => css`
+  ${({ size, disabled, opacity, autoInvert, theme }) => css`
     ${centerIcon(size)};
     opacity: ${disabled ? 0.25 : opacity};
     filter: ${autoInvert && theme['toolbar.lightForeground']
@@ -37,24 +31,21 @@ export const Icon = styled.div`
   `};
 `;
 
-export const Button = styled.div`
+interface ButtonProps {
+  theme?: ITheme;
+  toggled?: boolean;
+  disabled?: boolean;
+  dense?: boolean;
+}
+
+export const Button = styled.div<ButtonProps>`
   border-radius: 2px;
   position: relative;
   transition: 0.2s background-color;
   backface-visibility: hidden;
   margin: 0 1px;
 
-  ${({
-    theme,
-    toggled,
-    disabled,
-    dense,
-  }: {
-    theme: ITheme;
-    toggled: boolean;
-    disabled: boolean;
-    dense: boolean;
-  }) => css`
+  ${({ theme, toggled, disabled, dense }) => css`
     border-radius: ${dense ? 2 : 4}px;
     height: ${dense ? 26 : TOOLBAR_BUTTON_HEIGHT}px;
     min-width: ${dense ? 34 : TOOLBAR_BUTTON_WIDTH}px;
@@ -91,7 +82,7 @@ interface BadgeProps {
   top: number;
 }
 
-export const Badge = styled.div`
+export const Badge = styled.div<BadgeProps>`
   position: absolute;
   padding: 1px 3px;
   border-radius: 8px;
@@ -99,7 +90,7 @@ export const Badge = styled.div`
   pointer-events: none;
   z-index: 5;
   font-size: 8px;
-  ${({ background, color, top, right }: BadgeProps) => css`
+  ${({ background, color, top, right }) => css`
     background-color: ${background};
     color: ${color};
     right: ${right}px;
@@ -107,10 +98,9 @@ export const Badge = styled.div`
   `};
 `;
 
-export const PreloaderBg = styled.div`
+export const PreloaderBg = styled.div<{ theme?: ITheme }>`
   width: 32px;
   height: 32px;
-
   pointer-events: none;
   position: absolute;
   left: 50%;
@@ -118,7 +108,7 @@ export const PreloaderBg = styled.div`
   transform: translate(-50%, -50%);
   border-radius: 50%;
 
-  ${({ theme }: { theme: ITheme }) => css`
+  ${({ theme }) => css`
     border: 3px solid
       ${theme['toolbar.lightForeground']
         ? 'rgba(255, 255, 255, 0.1)'

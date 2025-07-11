@@ -3,6 +3,12 @@ import { ITheme } from '~/interfaces';
 import { centerIcon } from '~/renderer/mixins';
 import { ICON_ARROW_RIGHT } from '~/renderer/constants/icons';
 
+interface MenuItemProps {
+  arrow?: boolean;
+  disabled?: boolean;
+  theme?: ITheme;
+}
+
 export const Line = styled.div`
   height: 1px;
   width: 100%;
@@ -14,7 +20,7 @@ export const Line = styled.div`
   `};
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled.div<MenuItemProps>`
   height: 36px;
   align-items: center;
   display: flex;
@@ -22,7 +28,7 @@ export const MenuItem = styled.div`
   padding: 0 12px;
   font-size: 12px;
 
-  ${({ arrow }: { arrow?: boolean; disabled?: boolean }) =>
+  ${({ arrow }) =>
     arrow &&
     css`
       &:after {
@@ -40,14 +46,14 @@ export const MenuItem = styled.div`
       }
     `};
 
-  ${({ disabled }: { arrow?: boolean; disabled?: boolean }) =>
+  ${({ disabled }) =>
     css`
       pointer-events: ${disabled ? 'none' : 'inherit'};
       opacity: ${disabled ? 0.54 : 1};
     `};
 
   &:hover {
-    ${({ theme }: { theme?: ITheme }) => css`
+    ${({ theme }) => css`
       background-color: ${theme['dialog.lightForeground']
         ? 'rgba(255, 255, 255, 0.06)'
         : 'rgba(0, 0, 0, 0.03)'};
@@ -61,7 +67,7 @@ export const Label = styled.div`
   text-align: center;
 `;
 
-export const MenuItemZoom = styled.div`
+export const MenuItemZoom = styled.div<MenuItemProps>`
   height: 36px;
   align-items: center;
   display: flex;
@@ -69,7 +75,7 @@ export const MenuItemZoom = styled.div`
   padding: 0 12px;
   font-size: 12px;
 
-  ${({ arrow }: { arrow?: boolean; disabled?: boolean }) =>
+  ${({ arrow }) =>
     arrow &&
     css`
       &:after {
@@ -87,7 +93,7 @@ export const MenuItemZoom = styled.div`
       }
     `};
 
-  ${({ disabled }: { arrow?: boolean; disabled?: boolean }) =>
+  ${({ disabled }) =>
     css`
       pointer-events: ${disabled ? 'none' : 'inherit'};
       opacity: ${disabled ? 0.54 : 1};
@@ -116,14 +122,19 @@ export const Content = styled.div`
   position: relative;
 `;
 
-export const Icon = styled.div`
+interface IconProps {
+  icon?: string;
+  theme?: ITheme;
+}
+
+export const Icon = styled.div<IconProps>`
   margin-right: 12px;
   width: 20px;
   height: 20px;
   ${centerIcon()};
   opacity: 0.8;
 
-  ${({ icon, theme }: { icon?: string; theme?: ITheme }) => css`
+  ${({ icon, theme }) => css`
     background-image: url(${icon});
     filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
   `};

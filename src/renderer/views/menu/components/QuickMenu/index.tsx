@@ -139,7 +139,7 @@ export const QuickMenu = observer(() => {
           {store.updateAvailable && (
             <>
               <MenuItem onClick={onUpdateClick}>
-                <Icon icon={ICON_FIRE}></Icon>
+                <Icon icon={ICON_FIRE} />
                 <MenuItemTitle>Update {remote.app.name}</MenuItemTitle>
               </MenuItem>
               <Line />
@@ -149,7 +149,7 @@ export const QuickMenu = observer(() => {
             <Icon icon={ICON_TOPMOST} />
             <MenuItemTitle>Always on top</MenuItemTitle>
             <RightControl>
-              <Switch dense value={store.alwaysOnTop}></Switch>
+              <Switch dense value={store.alwaysOnTop} />
             </RightControl>
           </MenuItem>
           <Line />
@@ -193,12 +193,12 @@ export const QuickMenu = observer(() => {
               size={18}
               dense
               iconStyle={{ transform: 'scale(-1,1)' }}
-              onClick={onMinus}
               style={{
                 cursor: 'pointer',
                 marginLeft: '10px',
                 marginRight: '10px',
               }}
+              onClick={onMinus}
             />
             <Label>{(store.zoomFactor * 100).toFixed(0) + '%'}</Label>
             <ToolbarButton
@@ -207,12 +207,12 @@ export const QuickMenu = observer(() => {
               size={18}
               dense
               iconStyle={{ transform: 'scale(-1,1)' }}
-              onClick={onPlus}
               style={{
                 cursor: 'pointer',
                 marginLeft: '10px',
                 marginRight: '8px',
               }}
+              onClick={onPlus}
             />
             <div
               style={{
@@ -230,18 +230,16 @@ export const QuickMenu = observer(() => {
               style={{
                 cursor: 'pointer',
                 marginLeft: '10px',
-                // marginRight: '10px',
               }}
-              title="Reset Zoom"
               onClick={onReset}
             />
           </MenuItemZoom>
           <Line />
-          <MenuItem onClick={goToWebUIPage('history')} arrow>
+          <MenuItem arrow onClick={goToWebUIPage('history')}>
             <Icon icon={ICON_HISTORY} />
             <MenuItemTitle>History</MenuItemTitle>
           </MenuItem>
-          <MenuItem onClick={goToWebUIPage('bookmarks')} arrow>
+          <MenuItem arrow onClick={goToWebUIPage('bookmarks')}>
             <Icon icon={ICON_BOOKMARKS} />
             <MenuItemTitle>Bookmarks</MenuItemTitle>
           </MenuItem>
@@ -254,7 +252,6 @@ export const QuickMenu = observer(() => {
             <Icon icon={ICON_SETTINGS} />
             <MenuItemTitle>Settings</MenuItemTitle>
           </MenuItem>
-          {/* TODO: <MenuItem onClick={goToWebUIPage('extensions')}> */}
           <MenuItem
             onClick={goToURL(
               'https://chrome.google.com/webstore/category/extensions',

@@ -12,12 +12,12 @@ interface Props {
   onMouseUp?: (e?: React.MouseEvent<HTMLDivElement>) => void;
   onContextMenu?: (e?: React.MouseEvent<HTMLDivElement>) => void;
   size?: number;
-  style?: any;
+  style?: React.CSSProperties;
   icon: string;
-  divRef?: (ref: HTMLDivElement) => void;
+  divRef?: React.Ref<HTMLDivElement>;
   disabled?: boolean;
   className?: string;
-  children?: any;
+  children?: React.ReactNode;
   opacity?: number;
   autoInvert?: boolean;
   badgeBackground?: string;
@@ -30,8 +30,9 @@ interface Props {
   value?: number;
   toggled?: boolean;
   dense?: boolean;
-  iconStyle?: any;
+  iconStyle?: React.CSSProperties;
   id?: string;
+  title?: string;
 }
 
 export const ToolbarButton = observer(
@@ -39,30 +40,31 @@ export const ToolbarButton = observer(
     icon,
     onClick,
     onMouseDown,
-    size,
-    disabled,
+    size = 20,
+    disabled = false,
     className,
     divRef,
     children,
-    opacity,
-    autoInvert,
+    opacity = transparency.icons.active,
+    autoInvert = true,
     style,
     badgeText,
-    badgeBackground,
-    badge,
-    badgeTextColor,
-    badgeTop,
-    badgeRight,
-    value,
-    preloader,
+    badgeBackground = BLUE_500,
+    badge = false,
+    badgeTextColor = 'white',
+    badgeTop = 4,
+    badgeRight = 4,
+    value = 0,
+    preloader = false,
     onContextMenu,
     onMouseUp,
-    toggled,
-    dense,
+    toggled = false,
+    dense = false,
     iconStyle,
     id,
+    title,
   }: Props) => {
-    style = { ...style };
+    const buttonStyle = { ...style };
 
     return (
       <Button
@@ -72,11 +74,12 @@ export const ToolbarButton = observer(
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
         className={className}
-        style={style}
+        style={buttonStyle}
         toggled={toggled}
         dense={dense}
-        ref={divRef && divRef}
+        ref={divRef}
         disabled={disabled}
+        title={title}
       >
         <Icon
           style={{ backgroundImage: `url(${icon})`, ...iconStyle }}
@@ -98,13 +101,13 @@ export const ToolbarButton = observer(
         )}
         {preloader && value > 0 && (
           <>
-            <PreloaderBg></PreloaderBg>
+            <PreloaderBg />
             <Preloader
               style={{
                 position: 'absolute',
                 left: '50%',
                 top: '50%',
-                transform: `translate(-50%, -50%)`,
+                transform: 'translate(-50%, -50%)',
                 pointerEvents: 'none',
               }}
               thickness={3}
@@ -116,7 +119,7 @@ export const ToolbarButton = observer(
         {children}
       </Button>
     );
-  },
+  }
 );
 
 (ToolbarButton as any).defaultProps = {
