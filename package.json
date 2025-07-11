@@ -1,6 +1,6 @@
 {
   "name": "LunarWolf",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "license": "GPL-3.0",
   "sideEffects": false,
   "packageManager": "yarn@4.9.2",
@@ -13,7 +13,7 @@
     "mobx",
     "styled-components"
   ],
-  "homepage": "https://github.com/VQMSoftware/lunarwolf-Browser",
+  "homepage": "https://github.com/VQMSoftware/LunarWolf-Browser-Desktop",
   "main": "build/main.bundle.js",
   "author": "LunarWolf Browser Devs <vqmsoftware@gmail.com>",
   "repository": {
