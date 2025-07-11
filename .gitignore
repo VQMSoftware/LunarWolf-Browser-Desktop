@@ -1,0 +1,17 @@
+node_modules
+*.log
+*.log*
+build
+dist
+.DS_Store
+.fusebox
+filters
+package-lock.json
+temp-electron-builder.json
+temp-package.json
+chunks-entries-map.json
+.idea
+.vscode
+.yarn/cache
+yarn.lock
+.yarn/install-state.gz
