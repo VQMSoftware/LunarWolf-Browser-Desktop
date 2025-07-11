@@ -35,7 +35,7 @@ export const About = observer(() => {
         <p />
         <strong>vqmsoftware</strong> – orginization
         <br />
-        <strong>Wexond</strong> – Original Fork
+        <strong>Wexond</strong> – Original project
       </Contributors>
 
       <LegalNoticeBox>
