@@ -86,10 +86,10 @@ $ yarn dev # Run LunarWolf in development mode
 ### More commands
 
 ```bash
-$ yarn compile-win32 # Package LunarWolf for Windows
-$ yarn compile-linux # Package LunarWolf for Linux
-$ yarn compile-darwin # Package LunarWolf for macOS
-$ yarn lint # Runs linter
+$ yarn run compile-win32 # Package LunarWolf for Windows
+$ yarn run compile-linux # Package LunarWolf for Linux
+$ yarn run compile-darwin # Package LunarWolf for macOS
+$ yarn run lint # Runs linter
 $ yarn lint-fix # Runs linter and automatically applies fixes
 ```
 
