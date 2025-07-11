@@ -70,7 +70,7 @@ Before running LunarWolf, please ensure you have **latest** [`Node.js`](https://
 
 ### Windows
 
-Make sure you have build tools installed. You can install them by running this command as **administrator**:
+Make sure you have corepack enabled You can enable it by running this command as **administrator**:
 
 ```bash
 $ corepack enable
