@@ -13,15 +13,15 @@
     "mobx",
     "styled-components"
   ],
-  "homepage": "https://github.com/vqmsoftware/lunarwolf-Browser",
+  "homepage": "https://github.com/VQMSoftware/lunarwolf-Browser",
   "main": "build/main.bundle.js",
   "author": "LunarWolf Browser Devs <vqmsoftware@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vqmsoftware/LunarWolf-Browser-Desktop.git"
+    "url": "git+https://github.com/VQMSoftware/LunarWolf-Browser-Desktop.git"
   },
   "bugs": {
-    "url": "https://github.com/vqmsoftware/LunarWolf-Browser-Desktop/issues"
+    "url": "https://github.com/VQMSoftware/LunarWolf-Browser-Desktop/issues"
   },
   "scripts": {
     "dev-renderer": "cross-env DEV=1 webpack serve --config webpack.config.renderer.js",
